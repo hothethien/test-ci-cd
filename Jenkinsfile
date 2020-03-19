@@ -1,14 +1,8 @@
-pipeline {
-  stages {
-    stage('Build') {
-      steps {
-        sh 'mvn clean source:jar package'
-      }
-    }
-    stage('Static Analysis') {
-      steps {
-        sh 'mvn findbugs:findbugs'
-      }
-    }
-  } 
+#!/usr/bin/env groovy
+node('master'){
+    def VERSION = '2.0'
+	
+	stage ('checkout'){
+		checkout scm
+	}
 }
