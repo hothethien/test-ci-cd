@@ -7,10 +7,10 @@ node('master'){
 	}
 	
 	stage ('build') {
-		sh 'mvn clean source:jar package'
+		sh '/opt/apache-maven-3.1.1/bin/mvn clean source:jar package'
 	}
 	
 	stage ('static analysis') {
-		sh 'mvn findbugs:findbugs'
+		sh '/opt/apache-maven-3.1.1/bin/mvn findbugs:findbugs'
 	} 
 }
