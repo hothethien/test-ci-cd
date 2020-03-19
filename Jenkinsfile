@@ -13,4 +13,10 @@ node('master'){
 	stage ('static analysis') {
 		sh '/opt/apache-maven-3.1.1/bin/mvn findbugs:findbugs'
 	} 
+	
+	stage ('sonarqube analysis'){
+		withSonarQubeEnv('sonarqube'){
+			sh "/opt/apache-maven-3.1.1/bin/mvn sonar:sonar"
+		}
+	}
 }
